@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Typing Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Load React -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <!-- load Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+
+        #app{
+            text-align: center;
+        }
+
+        #letter{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 150px;
+        }
+
+        .incorrect{
+            color: red;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id='app' />
+
+    <script type='text/babel'>
+        class App extends React.Component{
+
+            constructor(props){
+                super(props);
+
+                this.state = {
+                    letter: 'A',
+                    score: 0,
+                    incorrect: false
+                }
+
+                this.handleKeyPress = this.handleKeyPress.bind(this);
+
+            }
+
+            componentDidMount() {
+                document.addEventListener('keydown', this.handleKeyPress);
+            }
+
+            componentWillUnmount() {
+                document.removeEventListener('keydown', this.handleKeyPress);
+            }
+
+            handleKeyPress(event) {
+                let input = event.key;
+                let alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+                if (input.toUpperCase() === this.state.letter){
+                    const letter = alphabets.charAt(Math.floor(Math.random() * 26));
+                    this.setState({
+                        score: this.state.score + 1,
+                        letter: letter,
+                        incorrect: false
+                    });
+                }
+
+                else{
+                    this.setState({
+                        incorrect: true
+                    });
+                }
+            }
+
+            render(){
+                return (
+                    <div>
+                        <div id='score'>Score: {this.state.score}</div>
+                        <div id='letter' className={this.state.incorrect ? 'incorrect': ''}>{this.state.letter}</div>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(<App />, document.querySelector('#app'));
+    </script>
+</body>
+
+</html>
