@@ -6,10 +6,12 @@ body {
     padding: 50px;
 }
 
-.buttons>a {
-    color: aliceblue;
+.btn {
+    margin: 5px;
+    width: 200px;
 }
 
-.buttons {
-    margin: 100px;
+.rowclass {
+    margin: 50px;
+    text-align: center;
 }
