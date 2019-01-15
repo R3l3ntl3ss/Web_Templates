@@ -1,0 +1,42 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.post-container{
+    position: relative;
+}
+
+.post-img{
+    width: 400px;
+}
+
+.post-heading{
+    font-size: 30px;
+    margin: 20px 0;
+    font-weight: 700;
+}
+
+.post-main{
+    position: absolute;
+    top: 50px;
+    left: 350px;
+
+    background-color: white;
+    width: 800px;
+    height: 200px;
+
+    padding: 0 20px;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.post-tag{
+    margin-bottom: 10px;
+}
+
+.post-tag span{
+    background-color: yellow;
+    padding: 2px 3px;
+    border-radius: 6px;
+}
